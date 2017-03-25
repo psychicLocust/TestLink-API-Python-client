@@ -468,6 +468,11 @@ class TestLinkAPIGenericOnlineTestCase(unittest.TestCase):
                             '40000712 project', '40000713 plan', '40000714 build', 
                             {'cf_b_ex_string' : 'a custom exec value', 
                              'cf_b_ex_numeric' : 111} )
+            
+    def test_getExecutionSet_unknownID(self):
+        with self.assertRaisesRegex(TLResponseError, '3000.*40000713'):
+            self.client.getExecutionSet(
+                            '40000713 plan', testcaseexternalid = 'TC-40000712')
          
                                  
 if __name__ == "__main__":

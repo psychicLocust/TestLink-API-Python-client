@@ -1,6 +1,24 @@
 Changes in TestLink-API-Python-client Source Distribution
 =========================================================
 
+TestLink-API-Python-client v0.6.5 (under develop)
+-------------------------------------------------
+support for TL 1.9.17 future release and py27, py34, py35 and py36
+
+implement 1.9.17 new api interfaces - #76
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- getExecutionSet(<testplanid>, [testcaseid=<testcaseid>], [testcaseexternalid=<testcaseexternalid>], 
+  [buildid=<buildid>], [buildname=<buildname>], [platformid=<platformid>], 
+  [platformname=<platformname>], [options=<options>], [devKey=<devKey>])
+
+known TL 1.9.17-DEV issues:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+API-XMLRPC - getExecutionSet raise database error 
+
+- see `TL Mantis Ticket 7900 <http://mantis.testlink.org/view.php?id=7900>`_
+
 TestLink-API-Python-client release notes v0.6.4 (Mar. 2017)
 -----------------------------------------------------------
 support for TL 1.9.16 release and py27, py34, py35 and py36

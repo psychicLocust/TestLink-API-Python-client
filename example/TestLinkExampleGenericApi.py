@@ -651,15 +651,21 @@ print("getTestCaseIDByName", response)
 response = myTestLink.getLastExecutionResult(newTestPlanID_A, 
                                              testcaseexternalid=tc_aa_full_ext_id)
 print("getLastExecutionResult", response)
+response = myTestLink.getExecutionSet(newTestPlanID_A, 
+                                             testcaseexternalid=tc_aa_full_ext_id)
+print("getExecutionSet", response)
 response = myTestLink.getLastExecutionResult(newTestPlanID_A, 
                                              testcaseid=newTestCaseID_B)
 print("getLastExecutionResult", response)
-if not myTLVersion == '<= 1.9.8':
-    # new optional arguments platformid , buildid with TL 1.9.9
-    response = myTestLink.getLastExecutionResult(
-                            newTestPlanID_A, testcaseid=newTestCaseID_AA,
-                            platformid=newPlatFormID_A)
-    print("getLastExecutionResult", response)
+response = myTestLink.getExecutionSet(newTestPlanID_A, 
+                                             testcaseid=newTestCaseID_B)
+print("getExecutionSet", response)
+response = myTestLink.getLastExecutionResult(newTestPlanID_A, 
+                        testcaseid=newTestCaseID_AA, platformid=newPlatFormID_A)
+print("getLastExecutionResult", response)
+response = myTestLink.getExecutionSet(newTestPlanID_A, 
+                        testcaseid=newTestCaseID_AA, platformid=newPlatFormID_A)
+print("getExecutionSet", response)
     
 response = myTestLink.getExecCountersByBuild(newTestPlanID_A)
 print("getExecCountersByBuild", response)

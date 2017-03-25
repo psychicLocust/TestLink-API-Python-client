@@ -1751,6 +1751,66 @@ TL version >= 1.9.11
         customfields  : dictionary with customfields names + values
         VERY IMPORTANT: value must be formatted in the way it's written to db
         """
+
+#   /**
+#    * Gets a set of EXECUTIONS for a particular testcase on a test plan.
+#    * If there are no filter criteria regarding platform and build,
+#    * result will be get WITHOUT checking for a particular platform and build.
+#    *
+#    * @param struct $args
+#    * @param string $args["devKey"]
+#    * @param int $args["tplanid"]
+#    * @param int $args["testcaseid"]: Pseudo optional.
+#    *                 if is not present then testcaseexternalid MUST BE present
+#    *
+#    * @param int $args["testcaseexternalid"]: Pseudo optional.
+#    *                 if is not present then testcaseid MUST BE present
+#    *
+#    * @param string $args["platformid"]: optional. 
+#    *                    ONLY if not present, then $args["platformname"] 
+#    *                    will be analized (if exists)
+#    *
+#    * @param string $args["platformname"]: optional (see $args["platformid"])
+#    * @param int $args["buildid"]: optional
+#    *        ONLY if not present, $args["buildname"] will be analized (if exists)
+#    *
+#    * @param int $args["buildname"] - optional (see $args["buildid"])
+#    * @param int $args["options"] - optional 
+#    *                               options['getOrderDescending'] 
+#    *                               false(=ascending,default)
+#    * @return mixed $resultInfo
+#    *               if execution found
+#    *               array that contains a map with these keys:
+#    *               id (execution id),build_id,tester_id,execution_ts,
+#    *               status,testplan_id,tcversion_id,tcversion_number,
+#    *               execution_type,notes.
+#    *
+#    *               if test case has not been executed,
+#    *               array('id' => -1)
+#    * @access public
+#    */
+#   public function getExecutionSet($args)
+
+    @decoApiCallAddDevKey
+    @decoMakerApiCallWithArgs(['testplanid'],
+                        ['testcaseid', 'testcaseexternalid', 
+                         'buildid', 'buildname', 'platformid', 'platformname',
+                         'options'])
+    def getExecutionSet(self):
+        """ Gets a set of EXECUTIONS for a particular testcase on a test plan.
+            If there are no filter criteria regarding platform and build, result
+            will be get WITHOUT checking for a particular platform and build.
+         
+        testplanid           test plan id
+         
+        args variations:     testcaseid - testcaseexternalid
+                             buildid - buildname 
+                             platformid - platformname
+        testcase information is general mandatory
+        
+        options : dictionary with key 'getOrderDescending' and 
+                                  values 0 (false = default) or 1 (true)   
+        """
   
     #
     #  internal methods for general server calls
