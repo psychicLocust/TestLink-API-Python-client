@@ -5,17 +5,26 @@ TestLink-API-Python-client v0.6.5 (under develop)
 -------------------------------------------------
 support for TL 1.9.17 future release and py27, py34, py35 and py36
 
-implement 1.9.17 new api interfaces - #76
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+implement 1.9.17 new api interfaces - #76, #82
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - getExecutionSet(<testplanid>, [testcaseid=<testcaseid>], [testcaseexternalid=<testcaseexternalid>], 
   [buildid=<buildid>], [buildname=<buildname>], [platformid=<platformid>], 
   [platformname=<platformname>], [options=<options>], [devKey=<devKey>])
+- getRequirements(<testprojectid>, [testplanid=<testplanid>], [platformid=<platformid>], [devKey=<devKey>])
+- getReqCoverage(<testprojectid>, <requirementdocid>, [devKey=<devKey>])
 
 known TL 1.9.17-DEV issues:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-API-XMLRPC - getExecutionSet raise database error 
+API-XMLRPC - getRequirements raise PHP Fatal error (github commit 0c8feb6)
+
+- see `TL Mantis Ticket 7902 <http://mantis.testlink.org/view.php?id=7900>`_
+
+fixed TL 1.9.17-DEV issues:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+API-XMLRPC - getExecutionSet raise database error (github commit 1ee5f78)
 
 - see `TL Mantis Ticket 7900 <http://mantis.testlink.org/view.php?id=7900>`_
 

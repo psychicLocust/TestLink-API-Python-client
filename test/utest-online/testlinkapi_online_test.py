@@ -459,6 +459,19 @@ class TestLinkAPIOnlineTestCase(unittest.TestCase):
         with self.assertRaisesRegex(TLResponseError, '3000.*40000713'):
             self.client.getExecutionSet(
                             '40000713 plan', testcaseexternalid = 'TC-40000712')
+
+    def test_getRequirements_unknownID(self):
+        with self.assertRaisesRegex(TLResponseError, '7000.*40000712'):
+            self.client.getRequirements(
+                            '40000712 project', 
+                            testplanid = '40000713 plan', 
+                            platformid = '40000714 platform')
+         
+    def test_getReqCoverage_unknownID(self):
+        with self.assertRaisesRegex(TLResponseError, '7000.*40000712'):
+            self.client.getReqCoverage(
+                            '40000712 project', 
+                            requirementdocid = '40000721 req')
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

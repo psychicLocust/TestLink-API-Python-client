@@ -1801,15 +1801,69 @@ TL version >= 1.9.11
             If there are no filter criteria regarding platform and build, result
             will be get WITHOUT checking for a particular platform and build.
          
-        testplanid           test plan id
-         
-        args variations:     testcaseid - testcaseexternalid
-                             buildid - buildname 
-                             platformid - platformname
-        testcase information is general mandatory
+        mandatory arg: testplanid - identifies the test plan 
+        
+        mandatory args variations: testcaseid - testcaseexternalid
+        - test caset information is general mandatory
+
+        optional args variations:  buildid - buildname
+                                   platformid - platformname
         
         options : dictionary with key 'getOrderDescending' and 
                                   values 0 (false = default) or 1 (true)   
+        """
+
+# /**
+#    * Get requirements
+#    *
+#    * @param string $args["testprojectid"]
+#    * @param string $args["testplanid"] OPTIONAL
+#    * @param string $args["platformid"] OPTIONAL
+#    *
+#    * @return mixed error if someting's wrong, else array of test cases
+#    *
+#    * @access public
+#    */
+#   public function getRequirements($args)
+
+    @decoApiCallAddDevKey
+    @decoMakerApiCallWithArgs(['testprojectid'], ['testplanid', 'platformid'])
+    def getRequirements(self):
+        """ Get requirements.
+         
+        mandatory arg: testprojectid - identifies the test project 
+        
+        optional args: testplanid, platformid
+        """
+  
+# /**
+#    * Get requirement coverage
+#    *
+#    * Retrieve the test cases associated to a requirement
+#    *
+#    * @param struct $args
+#    * @param string $args["devKey"]: used to check if operation can be done.
+#    *                                if devKey is not valid => abort.
+#    *
+#    * @param string $args["testprojectid"]
+#    * @param string $args["requirementdocid"]
+#    *
+#    * @return mixed error if someting's wrong, else array of test cases
+#    *
+#    * @access public
+#    */
+#   public function getReqCoverage($args)
+
+    @decoApiCallAddDevKey
+    @decoMakerApiCallWithArgs(['testprojectid', 'requirementdocid'], [])
+    def getReqCoverage(self):
+        """ Get requirement coverage. 
+            Retrieve the test cases associated to a requirement
+         
+        mandatory arg: 
+            testprojectid    - identifies the test project 
+            requirementdocid - odentifies the requirement 
+
         """
   
     #

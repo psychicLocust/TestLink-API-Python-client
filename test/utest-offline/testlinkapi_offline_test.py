@@ -735,6 +735,29 @@ class TestLinkAPIOfflineTestCase(unittest.TestCase):
         argsDescription = self.api.whatArgs('getIssueTrackerSystem')
         self.assertIn('<itsname>,', argsDescription)
 
+    def test_whatArgs_getExecutionSet(self):
+        argsDescription = self.api.whatArgs('getExecutionSet')
+        self.assertIn('<testplanid>,', argsDescription)
+        self.assertIn('testcaseid=<testcaseid>', argsDescription)
+        self.assertIn('testcaseexternalid=<testcaseexternalid>', argsDescription)
+        self.assertIn('buildid=<buildid>', argsDescription)
+        self.assertIn('buildname=<buildname>', argsDescription)
+        self.assertIn('platformid=<platformid>', argsDescription)
+        self.assertIn('platformname=<platformname>', argsDescription)
+        self.assertIn('options=<options>', argsDescription)
+        
+    def test_whatArgs_getRequirements(self):
+        argsDescription = self.api.whatArgs('getRequirements')
+        self.assertIn('<testprojectid>,', argsDescription)
+        self.assertIn('testplanid=<testplanid>', argsDescription)
+        self.assertIn('platformid=<platformid>', argsDescription)
+        
+    def test_whatArgs_getReqCoverage(self):
+        argsDescription = self.api.whatArgs('getReqCoverage')
+        self.assertIn('<testprojectid>,', argsDescription)
+        self.assertIn('<requirementdocid>,', argsDescription)
+        
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

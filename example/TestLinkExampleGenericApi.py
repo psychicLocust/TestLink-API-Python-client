@@ -718,6 +718,16 @@ print("uploadRequirementAttachment", "Sorry currently no testdata")
 #                          {'req_spec' : 6733, 'requirements' : [6735, 6737]}])
 print("assignRequirements", "Sorry currently no testdata")
 
+# get requirements for the test project
+response = myTestLink.getRequirements(newProjectID, 
+                                      testplanid = newTestPlanID_A,
+                                      platformid = newPlatFormID_B)
+print("getRequirements", "Sorry currently no testdata", response)
+
+# get requirements for the test project
+response = myTestLink.getReqCoverage(newProjectID, 'feature-01')
+print("getReqCoverage", "Sorry currently no testdata", response)
+
 print("")
 print("Number of Projects in TestLink: %i " % len(myTestLink.getProjects()))
 print("")
