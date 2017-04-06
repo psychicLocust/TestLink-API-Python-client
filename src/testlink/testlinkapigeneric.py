@@ -1826,6 +1826,7 @@ TL version >= 1.9.11
 #    */
 #   public function getRequirements($args)
 
+    @decoMakerApiCallReplaceTLResponseError()            
     @decoApiCallAddDevKey
     @decoMakerApiCallWithArgs(['testprojectid'], ['testplanid', 'platformid'])
     def getRequirements(self):
@@ -1854,6 +1855,7 @@ TL version >= 1.9.11
 #    */
 #   public function getReqCoverage($args)
 
+    @decoMakerApiCallReplaceTLResponseError()            
     @decoApiCallAddDevKey
     @decoMakerApiCallWithArgs(['testprojectid', 'requirementdocid'], [])
     def getReqCoverage(self):

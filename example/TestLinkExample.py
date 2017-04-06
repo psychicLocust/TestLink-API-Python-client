@@ -721,25 +721,6 @@ print('getTestCasesForTestSuite A', response)
 # print("addTestCaseToTestPlan overwrite", response)
 
 
-# no test data
-# response = myTestLink.getTestCaseCustomFieldDesignValue(
-#             tc_aa_full_ext_id, 1, newProjectID, 'cfieldname', 'simple')
-# print "getTestCaseCustomFieldDesignValue", response
-print("getTestCaseCustomFieldDesignValue", "Sorry currently no testdata")
-
-# add png file as Attachemnt to a requirement specification.
-print("uploadRequirementSpecificationAttachment", "Sorry currently no testdata")
-# add png file as Attachemnt to a requirement.
-print("uploadRequirementAttachment", "Sorry currently no testdata")
-
-# add requirements to testcase AA
-# response = myTestLink.assignRequirements(tc_aa_full_ext_id, newProjectID, 
-#                         [{'req_spec' : 6729, 'requirements' : [6731]},
-#                          {'req_spec' : 6733, 'requirements' : [6735, 6737]}])
-print("assignRequirements", "Sorry currently no testdata")
-
-
-
 print("")
 print("Number of Projects      in TestLink: %s " % myTestLink.countProjects())
 print("Number of Platforms  (in TestPlans): %s " % myTestLink.countPlatforms())

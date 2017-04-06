@@ -17,12 +17,13 @@ implement 1.9.17 new api interfaces - #76, #82
 known TL 1.9.17-DEV issues:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-API-XMLRPC - getRequirements raise PHP Fatal error (github commit 0c8feb6)
 
-- see `TL Mantis Ticket 7902 <http://mantis.testlink.org/view.php?id=7900>`_
 
 fixed TL 1.9.17-DEV issues:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+API-XMLRPC - getRequirements raise PHP Fatal error (github commit 0c8feb6)
+
+- see `TL Mantis Ticket 7902 <http://mantis.testlink.org/view.php?id=7900>`_
 
 API-XMLRPC - getExecutionSet raise database error (github commit 1ee5f78)
 

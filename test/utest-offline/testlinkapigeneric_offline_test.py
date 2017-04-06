@@ -202,6 +202,33 @@ SCENARIO_KEYWORDS = {'getTestCasesForTestSuite' : {
 # scenario_no_project simulates a fresh empty test link application
 SCENARIO_NO_PROJECT = {'getProjects' : [] }
 
+# scenario_requirements defines response with requirements
+SCENARIO_REQUIREMENTS = {
+    'getRequirements' : {
+            'allReqs' : [{'id': '15344', 'req_doc_id': 'use-case-01'}, 
+                             {'id': '15346', 'req_doc_id': 'none-function-01'}, 
+                             {'id': '15350', 'req_doc_id': 'restriction-01'}, 
+                             {'id': '15352', 'req_doc_id': 'user-gui-01'}, 
+                             {'id': '15356', 'req_doc_id': 'system-func-01'}, 
+                             {'id': '15358', 'req_doc_id': 'feature-01'}],
+            'noReqs' : [],
+            'with_srs_id' : [{'id': '15344', 'req_doc_id': 'use-case-01', 'srs_id': '15342'}, 
+                             {'id': '15346', 'req_doc_id': 'none-function-01', 'srs_id': '15342'}, 
+                             {'id': '15350', 'req_doc_id': 'restriction-01', 'srs_id': '15348'}, 
+                             {'id': '15352', 'req_doc_id': 'user-gui-01', 'srs_id': '15348'}, 
+                             {'id': '15356', 'req_doc_id': 'system-func-01', 'srs_id': '15354'}, 
+                             {'id': '15358', 'req_doc_id': 'feature-01', 'srs_id': '15354'}] 
+                         },
+    'getReqCoverage' : {
+            'reqCovered' : [{'id': '15326', 'name': 'TESTCASE_B', 'tc_external_id': '2', 
+                             'login': 'pyTLapi', 'creation_ts': '2017-04-05 20:55:51'}],
+            'reqNotCovered' : '',
+            'reqUnknown' : [{'code': 11004, 
+                             'message': '(getReqCoverage) - Requirement (docid=req_doc_unknown) does not belong to project (id=15312).'}]
+                         }
+                         }
+
+
 # example text file attachment = this python file
 # why not using os.path.realpath(__file__)
 # -> cause __file__ could be compiled python file *.pyc, if the test run is 
@@ -240,7 +267,8 @@ class DummyAPIGeneric(TestlinkAPIGeneric):
                 response = data[argsAPI['user']]
             elif methodAPI in ['getProjectTestPlans', 'getProjectPlatforms',
                                'getFirstLevelTestSuitesForTestProject', 
-                               'getProjectKeywords']:
+                               'getProjectKeywords', 'getRequirements',
+                               'getReqCoverage']:
                 response = data[argsAPI['testprojectid']]
             elif methodAPI in ['getBuildsForTestPlan', 'getTestPlanPlatforms', 
                         'getTestSuitesForTestPlan', 'getTestCasesForTestPlan']:
@@ -864,6 +892,30 @@ class TestLinkAPIGenericOfflineTestCase(unittest.TestCase):
         self.assertIn('<testprojectid>,', argsDescription)
         self.assertIn('<requirementdocid>,', argsDescription)
         
+    def test_getRequirements_allRequirements(self):
+        self.api.loadScenario(SCENARIO_REQUIREMENTS)
+        response = self.api.getRequirements('allReqs')
+        self.assertEqual('feature-01', response[5]['req_doc_id'])
+        self.assertEqual(self.api.devKey, self.api.callArgs['devKey'])
+
+    def test_getRequirements_noRequirements(self):
+        self.api.loadScenario(SCENARIO_REQUIREMENTS)
+        response = self.api.getRequirements('noReqs')
+        self.assertEqual([], response)
+        self.assertEqual(self.api.devKey, self.api.callArgs['devKey'])
+
+    def Coveredtest_getReqCoverage_Covered(self):
+        self.api.loadScenario(SCENARIO_REQUIREMENTS)
+        response = self.api.getReqCoverage('reqCovered', 'a_req_doc_id')
+        self.assertEqual('TESTCASE_B', response[0]['name'])
+        self.assertEqual('15326', response[0]['id'])
+        self.assertEqual(self.api.devKey, self.api.callArgs['devKey'])
+        
+    def test_getReqCoverage_notCovered(self):
+        self.api.loadScenario(SCENARIO_REQUIREMENTS)
+        response = self.api.getReqCoverage('reqNotCovered', 'a_req_doc_id')
+        self.assertEqual([], response)
+        self.assertEqual(self.api.devKey, self.api.callArgs['devKey'])
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

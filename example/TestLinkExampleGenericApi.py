@@ -701,32 +701,16 @@ print("uploadTestCaseAttachment", newAttachment)
 response = myTestLink.getTestCaseAttachments(testcaseid=newTestCaseID_B)
 print("getTestCaseAttachments", response)
 
-# no test data
-# response = myTestLink.getTestCaseCustomFieldDesignValue(
-#             tc_aa_full_ext_id, 1, newProjectID, 'cfieldname', details='simple')
-# print "getTestCaseCustomFieldDesignValue", response
-print("getTestCaseCustomFieldDesignValue", "Sorry currently no testdata")
+# get requirements for the test project - empty result
+response = myTestLink.getRequirements(newProjectID)
+print("getRequirements test project", "Sorry currently no requirments", response)
 
-# add png file as Attachemnt to a requirement specification.
-print("uploadRequirementSpecificationAttachment", "Sorry currently no testdata")
-# add png file as Attachemnt to a requirement.
-print("uploadRequirementAttachment", "Sorry currently no testdata")
-
-# add requirements to testcase AA
-# response = myTestLink.assignRequirements(tc_aa_full_ext_id, newProjectID, 
-#                         [{'req_spec' : 6729, 'requirements' : [6731]},
-#                          {'req_spec' : 6733, 'requirements' : [6735, 6737]}])
-print("assignRequirements", "Sorry currently no testdata")
-
-# get requirements for the test project
+# get requirements for the test plan - empty result
 response = myTestLink.getRequirements(newProjectID, 
                                       testplanid = newTestPlanID_A,
                                       platformid = newPlatFormID_B)
-print("getRequirements", "Sorry currently no testdata", response)
+print("getRequirements test plan", "Sorry currently no requirments", response)
 
-# get requirements for the test project
-response = myTestLink.getReqCoverage(newProjectID, 'feature-01')
-print("getReqCoverage", "Sorry currently no testdata", response)
 
 print("")
 print("Number of Projects in TestLink: %i " % len(myTestLink.getProjects()))
