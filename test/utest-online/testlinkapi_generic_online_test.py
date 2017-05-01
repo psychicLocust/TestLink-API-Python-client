@@ -59,8 +59,9 @@ class TestLinkAPIGenericOnlineTestCase(unittest.TestCase):
     works with the example project NEW_PROJECT_API (see TestLinkExample.py)
     """
 
-    def setUp(self):
-        self.client = TestLinkHelper().connect(TestlinkAPIGeneric)
+    @classmethod
+    def setUpClass(cls):
+        cls.client = TestLinkHelper().connect(TestlinkAPIGeneric)
 
 #    def tearDown(self):
 #        pass
@@ -484,8 +485,7 @@ class TestLinkAPIGenericOnlineTestCase(unittest.TestCase):
     def test_getReqCoverage_unknownID(self):
         with self.assertRaisesRegex(TLResponseError, '7000.*40000712'):
             self.client.getReqCoverage(
-                            '40000712 project', 
-                            '40000721 req')
+                            '40000712 project', '40000721 req')
          
                                  
 if __name__ == "__main__":

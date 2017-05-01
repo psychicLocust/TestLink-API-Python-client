@@ -287,6 +287,7 @@ class DummyAPIClient(TestlinkAPIClient):
 
     def loadScenario(self, a_scenario):
         self.scenario_data = a_scenario
+        self.callArgs = None
 
     def _callServer(self, methodAPI, argsAPI=None):
         self.callArgs = argsAPI
@@ -334,8 +335,9 @@ class TestLinkAPIOfflineTestCase(unittest.TestCase):
                  {'step_number' : '3', 'actions' : "action C" , 
                 'expected_results' : "result C", 'execution_type' : "0"}]
 
-    def setUp(self):
-        self.api = TestLinkHelper().connect(DummyAPIClient)
+    @classmethod
+    def setUpClass(cls):
+        cls.api = TestLinkHelper().connect(DummyAPIClient)
 
 #    def tearDown(self):
 #        pass

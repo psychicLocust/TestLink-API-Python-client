@@ -255,6 +255,7 @@ class DummyAPIGeneric(TestlinkAPIGeneric):
 
     def loadScenario(self, a_scenario):
         self.scenario_data = a_scenario
+        self.callArgs = None
 
     def _callServer(self, methodAPI, argsAPI=None):
         self.callArgs = argsAPI
@@ -298,10 +299,10 @@ class TestLinkAPIGenericOfflineTestCase(unittest.TestCase):
     works with DummyAPIGeneric which returns special test data
     """
 
-    def setUp(self):
-        self.api = TestLinkHelper().connect(DummyAPIGeneric)
-        self.callArgs = None
-        
+    @classmethod
+    def setUpClass(cls):
+        cls.api = TestLinkHelper().connect(DummyAPIGeneric)
+
 #    def tearDown(self):
 #        pass
 
