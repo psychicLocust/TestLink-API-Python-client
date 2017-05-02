@@ -338,6 +338,9 @@ class TestLinkAPIOfflineTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.api = TestLinkHelper().connect(DummyAPIClient)
+        
+    def setUp(self):
+        self.api._emptyStepsList()
 
 #    def tearDown(self):
 #        pass

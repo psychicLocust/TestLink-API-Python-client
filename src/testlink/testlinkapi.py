@@ -58,7 +58,7 @@ class TestlinkAPIClient(TestlinkAPIGeneric):
         # reportTCResult(None, newTestPlanID, None, 'f', '', guess=True,
         #                             testcaseexternalid=tc_aa_full_ext_id)
         # otherwise xmlrpclib raise an error, that None values are not allowed
-        self.stepsList = []
+        self._emptyStepsList()
         self._changePositionalArgConfig()
         
     def _changePositionalArgConfig(self):
@@ -469,14 +469,8 @@ class TestlinkAPIClient(TestlinkAPIGeneric):
         """ initStep :
         Initializes the list which stores the Steps of a Test Case to create  
         """
-        self.stepsList = []
-        lst = {}
-        lst['step_number'] = '1'
-        lst['actions'] = actions
-        lst['expected_results'] = expected_results
-        lst['execution_type'] = str(execution_type)
-        self.stepsList.append(lst)
-        return True
+        self._emptyStepsList()
+        return self.appendStep(actions, expected_results, execution_type)
         
     def appendStep(self, actions, expected_results, execution_type):
         """ appendStep :
@@ -488,7 +482,11 @@ class TestlinkAPIClient(TestlinkAPIGeneric):
         lst['expected_results'] = expected_results
         lst['execution_type'] = str(execution_type)
         self.stepsList.append(lst)
-        return True                
+        return True    
+    
+    def _emptyStepsList(self):
+        """ reset .stepsList to an empty List """
+        self.stepsList = []            
                                         
     def getProjectIDByName(self, projectName):   
         projects=self.getProjects()
