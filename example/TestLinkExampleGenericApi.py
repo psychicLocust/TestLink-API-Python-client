@@ -261,7 +261,7 @@ print("createTestCase", newTestCase)
 newTestCaseID_AA = newTestCase[0]['id'] 
 print("New Test Case '%s' - id: %s" % (NEWTESTCASE_AA, newTestCaseID_AA))
  
-#Creates the test case TC_B with state rework
+# Creates the test case TC_B with state rework - in wrong test suite A
 steps_tc_b = [
         {'step_number' : 1, 'actions' : "Step action 1 -b " , 
          'expected_results' : "Step result 1 - b", 'execution_type' : AUTOMATED},
@@ -274,13 +274,18 @@ steps_tc_b = [
         {'step_number' : 5, 'actions' : "Step action 5 -b " , 
          'expected_results' : "Step result 5 - b", 'execution_type' : AUTOMATED}]
       
-newTestCase = myTestLink.createTestCase(NEWTESTCASE_B, newTestSuiteID_B, 
+newTestCase = myTestLink.createTestCase(NEWTESTCASE_B, newTestSuiteID_A, 
           newProjectID, myTestUserName, "This is the summary of the Test Case B", 
           steps_tc_b, preconditions='these are the preconditions', 
           executiontype=AUTOMATED, status=REWORK, estimatedexecduration=0.5)               
-print("createTestCase", newTestCase)
+print("createTestCase TC-B in TS-A", newTestCase)
 newTestCaseID_B = newTestCase[0]['id'] 
 print("New Test Case '%s' - id: %s" % (NEWTESTCASE_B, newTestCaseID_B))
+
+# Move test case TC_B to correct test suite B
+tc_b_full_ext_id = myTestLink.getTestCase(testcaseid=newTestCaseID_B)[0]['full_tc_external_id']
+response = myTestLink.setTestCaseTestSuite(tc_b_full_ext_id, newTestSuiteID_B)
+print("setTestCaseTestSuite TC-B to TS-B" , response)
 
 # Add  test cases to test plan - we need the full external id !
 # for every test case version 1 is used

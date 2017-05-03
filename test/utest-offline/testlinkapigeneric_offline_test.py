@@ -918,6 +918,12 @@ class TestLinkAPIGenericOfflineTestCase(unittest.TestCase):
         self.assertEqual([], response)
         self.assertEqual(self.api.devKey, self.api.callArgs['devKey'])
 
+    def test_whatArgs_setTestCaseTestSuite(self):
+        argsDescription = self.api.whatArgs('setTestCaseTestSuite')
+        self.assertIn('<testcaseexternalid>,', argsDescription)
+        self.assertIn('<testsuiteid>,', argsDescription)
+        
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

@@ -1864,7 +1864,28 @@ TL version >= 1.9.11
          
         mandatory arg: 
             testprojectid    - identifies the test project 
-            requirementdocid - odentifies the requirement 
+            requirementdocid - identifies the requirement 
+
+        """
+        
+#    /**
+#     * 
+#     * @param struct $args
+#     * @param string $args["devKey"]
+#     * @param string $args["testcaseexternalid"] format PREFIX-NUMBER
+#     * @param int    $args["testsuiteid"] 
+#     * 
+#     */
+#   public function setTestCaseTestSuite($args)      
+  
+    @decoApiCallAddDevKey
+    @decoMakerApiCallWithArgs(['testcaseexternalid', 'testsuiteid'], [])
+    def setTestCaseTestSuite(self):
+        """ move a test case to a different Test Suite 
+         
+        mandatory arg: 
+            testcaseexternalid - identifies the test case 
+            testsuiteid        - identifies the test suite 
 
         """
   

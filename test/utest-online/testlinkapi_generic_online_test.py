@@ -487,6 +487,11 @@ class TestLinkAPIGenericOnlineTestCase(unittest.TestCase):
             self.client.getReqCoverage(
                             '40000712 project', '40000721 req')
          
+    def test_setTestCaseTestSuite_unknownID(self):
+        with self.assertRaisesRegex(TLResponseError, '5040.*TC-40000712'):
+            self.client.setTestCaseTestSuite(
+                            'TC-40000712', '40000713 suite')
+         
                                  
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

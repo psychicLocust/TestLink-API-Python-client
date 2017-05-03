@@ -13,6 +13,7 @@ implement 1.9.17 new api interfaces - #76, #82
   [platformname=<platformname>], [options=<options>], [devKey=<devKey>])
 - getRequirements(<testprojectid>, [testplanid=<testplanid>], [platformid=<platformid>], [devKey=<devKey>])
 - getReqCoverage(<testprojectid>, <requirementdocid>, [devKey=<devKey>])
+- setTestCaseTestSuite(<testcaseexternalid>, <testsuiteid>, [devKey=<devKey>])
 
 known TL 1.9.17-DEV issues:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

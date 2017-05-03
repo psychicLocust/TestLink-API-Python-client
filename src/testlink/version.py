@@ -17,6 +17,6 @@
 #
 # ------------------------------------------------------------------------
 
-VERSION = '0.6.5-dev082'
-TL_RELEASE = 'DEV 1.9.17 (github 4aa14ae)'
+VERSION = '0.6.5-dev081'
+TL_RELEASE = 'DEV 1.9.17 (github e281cbd)'
 
