@@ -695,6 +695,10 @@ print("uploadTestProjectAttachment", newAttachment)
 newAttachment = myTestLink.uploadTestSuiteAttachment(NEWATTACHMENT_PNG, newTestSuiteID_A, 
             title='PNG Example', description='PNG Attachment Example for a TestSuite')
 print("uploadTestSuiteAttachment", newAttachment)
+# get Attachment of test suite A
+response = myTestLink.getTestSuiteAttachments(newTestSuiteID_A)
+print("getTestSuiteAttachments", response)
+
 # add png file as Attachment to test case B 
 a_file=open(NEWATTACHMENT_PNG, mode='rb')
 newAttachment = myTestLink.uploadTestCaseAttachment(a_file, newTestCaseID_B, 

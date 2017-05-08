@@ -923,6 +923,9 @@ class TestLinkAPIGenericOfflineTestCase(unittest.TestCase):
         self.assertIn('<testcaseexternalid>,', argsDescription)
         self.assertIn('<testsuiteid>,', argsDescription)
         
+    def test_whatArgs_getTestSuiteAttachments(self):
+        argsDescription = self.api.whatArgs('getTestSuiteAttachments')
+        self.assertIn('<testsuiteid>,', argsDescription)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

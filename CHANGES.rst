@@ -5,8 +5,8 @@ TestLink-API-Python-client v0.6.5 (under develop)
 -------------------------------------------------
 support for TL 1.9.17 future release and py27, py34, py35 and py36
 
-implement 1.9.17 new api interfaces - #76, #82
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+implement 1.9.17 new api interfaces - #76, #81, #82, #83
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - getExecutionSet(<testplanid>, [testcaseid=<testcaseid>], [testcaseexternalid=<testcaseexternalid>], 
   [buildid=<buildid>], [buildname=<buildname>], [platformid=<platformid>], 
@@ -14,6 +14,7 @@ implement 1.9.17 new api interfaces - #76, #82
 - getRequirements(<testprojectid>, [testplanid=<testplanid>], [platformid=<platformid>], [devKey=<devKey>])
 - getReqCoverage(<testprojectid>, <requirementdocid>, [devKey=<devKey>])
 - setTestCaseTestSuite(<testcaseexternalid>, <testsuiteid>, [devKey=<devKey>])
+- getTestSuiteAttachments(<testsuiteid>, [devKey=<devKey>])
 
 known TL 1.9.17-DEV issues:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

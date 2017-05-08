@@ -1888,6 +1888,27 @@ TL version >= 1.9.11
             testsuiteid        - identifies the test suite 
 
         """
+
+#   /**
+#    * Gets attachments for specified test suite.
+#    * The attachment file content is Base64 encoded. To save the file to disk in client,
+#    * Base64 decode the content and write file in binary mode.
+#    *
+#    * @param struct $args
+#    * @param string $args["devKey"] Developer key
+#    * @param int $args["testsuiteid"]: id of the testsuite
+#    *
+#    * @return mixed $resultInfo
+#    * @author dennis@etern-it.de
+#    */
+#   public function getTestSuiteAttachments($args)
+
+    @decoApiCallAddDevKey               
+    @decoMakerApiCallWithArgs(['testsuiteid'], [])
+    def getTestSuiteAttachments(self):
+        """ Gets attachments for specified test suite.
+        The attachment file content is Base64 encoded. To save the file to disk 
+        in client, Base64 decode the content and write file in binary mode.  """
   
     #
     #  internal methods for general server calls

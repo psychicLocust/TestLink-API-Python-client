@@ -491,6 +491,10 @@ class TestLinkAPIGenericOnlineTestCase(unittest.TestCase):
         with self.assertRaisesRegex(TLResponseError, '5040.*TC-40000712'):
             self.client.setTestCaseTestSuite(
                             'TC-40000712', '40000713 suite')
+
+    def test_getTestSuiteAttachments_unknownID(self):
+        with self.assertRaisesRegex(TLResponseError, '8000.*40000712'):
+            self.client.getTestSuiteAttachments(40000712)
          
                                  
 if __name__ == "__main__":
