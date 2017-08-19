@@ -41,6 +41,7 @@ decoApiCallAddDevKey, decoApiCallWithoutArgs, \
 decoMakerApiCallReplaceTLResponseError, decoMakerApiCallWithArgs, \
 decoMakerApiCallChangePosToOptArg
 
+import ssl
 
 class TestlinkAPIGeneric(object): 
     """ client for XML-RPC communication between Python and TestLink 
@@ -65,8 +66,10 @@ class TestlinkAPIGeneric(object):
         encoding=args.get('encoding')
         verbose=args.get('verbose',0)
         allow_none=args.get('allow_none',0)
+        use_datetime = args.get('use_datetime', 0)
+        context = args.get('context', ssl._create_unverified_context())
         self.server = xmlrpclib.Server(server_url, transport, encoding,
-                                       verbose, allow_none)
+                                       verbose, allow_none, use_datetime, context)
         self.devKey = devKey
         self._server_url = server_url
         self._positionalArgNames = getMethodsWithPositionalArgs()
